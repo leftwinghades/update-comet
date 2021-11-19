@@ -2,6 +2,9 @@
 
 RELEASE_URL="https://github.com/leftwinghades/comet-discord-bot/archive/refs/tags/v$1.tar.gz"
 
+echo "Stopping Comet"
+pkill -f bot.py
+
 echo "Downloading release c$1 from Github"
 wget "https://github.com/leftwinghades/comet-discord-bot/archive/refs/tags/v$1.tar.gz"
 
@@ -14,3 +17,6 @@ mv comet-discord-bot-$1/* Bot/
 echo "Cleaning up..."
 rm -r comet-discord-bot-$1/
 rm v$1.tar.gz
+
+echo "Restarting Comet"
+python3 /home/pi/Documents/Comet/Bot/bot.py &
